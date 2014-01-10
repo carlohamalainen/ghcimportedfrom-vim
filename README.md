@@ -51,10 +51,6 @@ Install ghcimportedfrom-vim:
 
     git clone https://github.com/carlohamalainen/ghcimportedfrom-vim ~/.vim/bundle/ghcimportedfrom-vim
 
-If you use literate Haskell (lhs files):
-
-    ln -s ~/.vim/bundle/ghcimportedfrom-vim/after/ftplugin/haskell ~/.vim/bundle/ghcimportedfrom-vim/after/ftplugin/lhaskell
-
 Add these lines to ```~/.vimrc```:
 
     au FileType haskell  nnoremap <buffer> <F4> :GhcImportedFromOpenHaddock<CR>
