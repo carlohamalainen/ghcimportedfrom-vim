@@ -65,5 +65,5 @@ In Vim, put the cursor over a symbol, and hit F4 to open the relevant
 Haddock documentation page in the system's default browser, or F5 to
 echo the Haddock URL in the Vim window.
 
-The [http://www.youtube.com/watch?v=VVc8uupYJGs](screencast) shows
+The [screencast](http://www.youtube.com/watch?v=VVc8uupYJGs shows
 some examples. Make sure that the video plays in 720p HD fullscreen.
