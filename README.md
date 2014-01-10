@@ -35,6 +35,7 @@ Install into user's cabal directory:
     git clone https://github.com/carlohamalainen/ghc-imported-from
     cd ghc-imported-from
     cabal install
+    cd -
 
 Alternatively, see the script ```build_in_sandbox.sh``` for building
 in a cabal sandbox (requires a fairly recent version of Cabal).
