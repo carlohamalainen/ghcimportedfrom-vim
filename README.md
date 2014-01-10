@@ -14,7 +14,6 @@ Install Pathogen:
 
     mkdir -p ~/.vim/autoload ~/.vim/bundle;
     curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-    Ensure that these lines are in ~/.vimrc:
 
 Add these lines to ```~/.vimrc```:
 
