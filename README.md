@@ -1,8 +1,8 @@
 # ghcimportedfrom-vim
 
-Vim plugin for [https://github.com/carlohamalainen/ghc-imported-from](ghc-imported-from).
+Vim plugin for [ghc-imported-from](https://github.com/carlohamalainen/ghc-imported-from).
 
-Based heavily on [https://github.com/eagletmt/ghcmod-vim](ghcmod-vim).
+Based heavily on [ghcmod-vim](https://github.com/eagletmt/ghcmod-vim).
 
 ## Installation
 
