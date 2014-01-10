@@ -39,7 +39,7 @@ function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
         execute ':redraw!'
         " FIXME does not handle Linux/OSX/Windows cases.
     else
-      if has("win")
+      if has("win32")
         execute 'silent !start cmd /c start ' . l:doc_url . ' &'
       endif
 
