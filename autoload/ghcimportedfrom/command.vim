@@ -38,8 +38,11 @@ function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
         execute 'silent !' . g:ghcimportedfrom_browser . ' ' . l:doc_url . ' >& /dev/null &'
         execute ':redraw!'
     else
+      execute 'silent !start cmd /c start ' . l:doc_url . ' &'
       if has("win")
-        echo 'Error, not implemented. Go here: ' . l:doc_url
+        " execute 'silent !start cmd /c start.exe ' . l:doc_url
+        
+        " execute ':redraw!'
       endif
 
       if has("unix")
