@@ -37,7 +37,7 @@ function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
     if exists('g:ghcimportedfrom_browser')
         execute 'silent !' . g:ghcimportedfrom_browser . ' ' . l:doc_url . ' >& /dev/null &'
         execute ':redraw!'
-        # FIXME does not handle Linux/OSX/Windows cases.
+        " FIXME does not handle Linux/OSX/Windows cases.
     else
       if has("win")
         execute 'silent !start cmd /c start ' . l:doc_url . ' &'
