@@ -55,7 +55,7 @@ function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
       endif
     endif
   else
-    echo l:doc_url
+    call ghcimportedfrom#util#print_error("ghcimportedfrom#get_doc_url: could not guess Haddock url for symbol: " . l:fexp)
   endif
 endfunction "}}}
 
@@ -72,7 +72,13 @@ function! ghcimportedfrom#command#echo_doc_url(fexp, force) "{{{
   let l:line = line('.')
   let l:col = col('.')
 
-  echo ghcimportedfrom#get_doc_url(l:path, ghcimportedfrom#detect_module(), l:fexp, l:line, l:col)
+  let l:doc_url = ghcimportedfrom#get_doc_url(l:path, ghcimportedfrom#detect_module(), l:fexp, l:line, l:col)
+
+  if l:doc_url =~ '^http' || l:doc_url =~ '^file'
+    echo l:doc_url
+  else
+    call ghcimportedfrom#util#print_error("ghcimportedfrom#get_doc_url: could not guess Haddock url for symbol: " . l:fexp)
+  endif
 endfunction "}}}
 
 " vim: set ts=2 sw=2 et fdm=marker:

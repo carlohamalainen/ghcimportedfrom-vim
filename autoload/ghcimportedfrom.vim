@@ -12,12 +12,31 @@ endfunction "}}}
 
 function! ghcimportedfrom#get_doc_url(path, module, fexp, line, col) "{{{
   " Call ghc-imported-from to get the haddock url, if possible.
-  " FIXME do we need add_autogen_dir when building the ghc-imported-from command?
-  " FIXME We need to check for b:ghcmod_ghc_options and g:ghcmod_ghc_options
-  " and append the arguments to ghc-imported-from. Do this once GHC options
-  " parsing is fixed in ghc-imported-from.
 
   let l:cmd = ['ghc-imported-from', a:path, a:module, a:fexp, a:line, a:col]
+
+  " GHC options
+  if exists('b:ghcimportedfrom_ghc_options')
+    let l:opts = b:ghcimportedfrom_ghc_options
+  else
+    let l:opts = get(g:, 'ghcimportedfrom_ghc_options', [])
+  endif
+  call extend(l:cmd, ['--ghc-options'])
+  for l:opt in l:opts
+    call extend(l:cmd, [l:opt])
+  endfor
+
+  " ghc-pkg options
+  if exists('b:ghcimportedfrom_ghcpkg_options')
+    let l:opts = b:ghcimportedfrom_ghcpkg_options
+  else
+    let l:opts = get(g:, 'ghcimportedfrom_ghcpkg_options', [])
+  endif
+  call extend(l:cmd, ['--ghc-pkg-options'])
+  for l:opt in l:opts
+    call extend(l:cmd, [l:opt])
+  endfor
+
   let l:output = s:system(l:cmd)
   let l:lines = split(l:output, '\n')
   let l:lastline = l:lines[-1]
@@ -25,7 +44,6 @@ function! ghcimportedfrom#get_doc_url(path, module, fexp, line, col) "{{{
   if l:lastline =~ "^SUCCESS.*"
     return split(l:lastline, ' ')[1]
   endif
-  " FIXME if an error, tell the use something.
 endfunction "}}}
 
 function! ghcimportedfrom#detect_module() "{{{
