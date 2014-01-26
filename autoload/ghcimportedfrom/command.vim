@@ -55,7 +55,7 @@ function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
       endif
     endif
   else
-    call ghcimportedfrom#util#print_error("ghcimportedfrom#get_doc_url: could not guess Haddock url for symbol: " . l:fexp)
+    call ghcimportedfrom#util#print_error("ghcimportedfrom#get_doc_url: could not guess Haddock url for symbol: " . l:fexp . "\n" . l:doc_url)
   endif
 endfunction "}}}
 
@@ -77,7 +77,7 @@ function! ghcimportedfrom#command#echo_doc_url(fexp, force) "{{{
   if l:doc_url =~ '^http' || l:doc_url =~ '^file'
     echo l:doc_url
   else
-    call ghcimportedfrom#util#print_error("ghcimportedfrom#get_doc_url: could not guess Haddock url for symbol: " . l:fexp)
+    call ghcimportedfrom#util#print_error("ghcimportedfrom#get_doc_url: could not guess Haddock url for symbol: " . l:fexp . "\n" . l:doc_url)
   endif
 endfunction "}}}
 
