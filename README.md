@@ -110,12 +110,27 @@ Make sure that it looks like this:
     au FileType haskell  nnoremap <buffer> <F5> :GhcImportedFromEchoUrl<CR>
     au FileType lhaskell nnoremap <buffer> <F5> :GhcImportedFromEchoUrl<CR>
 
+    au FileType haskell  vnoremap <S-F4> :<C-u> :GhcImportedFromOpenHaddockVismode<CR>
+    au FileType lhaskell vnoremap <S-F4> :<C-u> :GhcImportedFromOpenHaddockVismode<CR>
+
+    au FileType haskell  vnoremap <S-F5> :<C-u> :GhcImportedFromEchoUrlVismode<CR>
+    au FileType lhaskell vnoremap <S-F5> :<C-u> :GhcImportedFromEchoUrlVismode<CR>
+
 
 ## Using
 
 In Vim, put the cursor over a symbol, and hit F4 to open the relevant
 Haddock documentation page in the system's default browser, or F5 to
 echo the Haddock URL in the Vim window.
+
+If the cursor is over a "strange" symbol like
+
+    <$
+
+then the standard regex may not identify the symbol properly. In this
+case you can use vim's visual mode to highlight the text and then hit
+```Shift-F4``` or ```Shift-F5``` to open the doc or echo the url
+for the highlighted term.
 
 The [screencast](http://www.youtube.com/watch?v=VVc8uupYJGs) shows
 some examples. Make sure that the video plays in 720p HD fullscreen.
