@@ -18,14 +18,18 @@ function! s:buffer_path(force) "{{{
   return l:path
 endfunction "}}}
 
-function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
+function! ghcimportedfrom#command#opendoc(fexp, force, vismode) "{{{
   let l:path = s:buffer_path(a:force)
   if empty(l:path)
     return
   endif
   let l:fexp = a:fexp
   if empty(l:fexp)
-    let l:fexp = ghcimportedfrom#getHaskellIdentifier()
+    if a:vismode
+      let l:fexp = ghcimportedfrom#get_visual_selection()
+    else
+      let l:fexp = ghcimportedfrom#getHaskellIdentifier()
+    endif
   end
 
   let l:line = line('.')
@@ -48,7 +52,7 @@ function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
           " Redirect output to /dev/null? Untested!
           execute "silent !open " . l:doc_url
         else
-          execute "silent !xdg-open " . l:doc_url . ' >& /dev/null'
+          execute "silent !xdg-open " . l:doc_url . ' >& /dev/null &'
         endif
 
         execute ':redraw!'
@@ -59,14 +63,18 @@ function! ghcimportedfrom#command#opendoc(fexp, force) "{{{
   endif
 endfunction "}}}
 
-function! ghcimportedfrom#command#echo_doc_url(fexp, force) "{{{
+function! ghcimportedfrom#command#echo_doc_url(fexp, force, vismode) "{{{
   let l:path = s:buffer_path(a:force)
   if empty(l:path)
     return
   endif
   let l:fexp = a:fexp
   if empty(l:fexp)
-    let l:fexp = ghcimportedfrom#getHaskellIdentifier()
+    if a:vismode
+      let l:fexp = ghcimportedfrom#get_visual_selection()
+    else
+      let l:fexp = ghcimportedfrom#getHaskellIdentifier()
+    endif
   end
 
   let l:line = line('.')

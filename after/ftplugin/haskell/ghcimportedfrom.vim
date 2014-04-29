@@ -24,8 +24,12 @@ else
   let b:undo_ftplugin = ''
 endif
 
-command! -buffer -nargs=? -bang GhcImportedFromOpenHaddock  call ghcimportedfrom#command#opendoc(<q-args>, <bang>0)
-command! -buffer -nargs=? -bang GhcImportedFromEchoUrl      call ghcimportedfrom#command#echo_doc_url(<q-args>, <bang>0)
+command! -buffer -nargs=? -bang GhcImportedFromOpenHaddock  call ghcimportedfrom#command#opendoc(<q-args>, <bang>0, 0)
+command! -buffer -nargs=? -bang GhcImportedFromEchoUrl      call ghcimportedfrom#command#echo_doc_url(<q-args>, <bang>0, 0)
+
+command! -buffer -nargs=? -bang GhcImportedFromOpenHaddockVismode  call ghcimportedfrom#command#opendoc(<q-args>, <bang>0, 1)
+command! -buffer -nargs=? -bang GhcImportedFromEchoUrlVismode      call ghcimportedfrom#command#echo_doc_url(<q-args>, <bang>0, 1)
+
 let b:undo_ftplugin .= join(map([
       \ 'GhcImportedFromOpenHaddock',
       \ 'GhcImportedFromEchoUrl',
