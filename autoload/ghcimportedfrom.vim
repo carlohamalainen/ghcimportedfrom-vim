@@ -32,10 +32,12 @@ function! ghcimportedfrom#get_doc_url(path, module, fexp, line, col) "{{{
   else
     let l:opts = get(g:, 'ghcimportedfrom_ghc_options', [])
   endif
-  call extend(l:cmd, ['--ghc-options'])
-  for l:opt in l:opts
-    call extend(l:cmd, [l:opt])
-  endfor
+  if l:opts != []
+    for l:opt in l:opts
+      call extend(l:cmd, ['--ghc-options'])
+      call extend(l:cmd, [l:opt])
+    endfor
+  endif
 
   " ghc-pkg options
   if exists('b:ghcimportedfrom_ghcpkg_options')
@@ -43,10 +45,16 @@ function! ghcimportedfrom#get_doc_url(path, module, fexp, line, col) "{{{
   else
     let l:opts = get(g:, 'ghcimportedfrom_ghcpkg_options', [])
   endif
-  call extend(l:cmd, ['--ghc-pkg-options'])
-  for l:opt in l:opts
-    call extend(l:cmd, [l:opt])
-  endfor
+  if l:opts != []
+    for l:opt in l:opts
+      call extend(l:cmd, ['--ghc-pkg-options'])
+      call extend(l:cmd, [l:opt])
+    endfor
+  endif
+
+  " Debugging:
+  " echo l:cmd
+  " return
 
   let l:output = s:system(l:cmd)
   let l:lines = split(l:output, '\n')
