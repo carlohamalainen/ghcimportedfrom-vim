@@ -134,3 +134,21 @@ for the highlighted term.
 
 The [screencast](http://www.youtube.com/watch?v=VVc8uupYJGs) shows
 some examples. Make sure that the video plays in 720p HD fullscreen.
+
+## Customising
+
+To manually specify the browser, set ```g:ghcimportedfrom_browser``` in your ```~/.vimrc```:
+
+    let g:ghcimportedfrom_browser = '/usr/bin/google-chrome'
+
+To pass extra options to GHC:
+
+    let g:ghcimportedfrom_ghc_options = ['-blap']
+
+To pass extra options to ghc-pkg:
+
+    let g:ghcimportedfrom_ghcpkg_options = ['--global', '--package-db=/home/user/foo/.cabal-sandbox/x86_64-linux-ghc-7.6.3-packages.conf.d']
+
+Beware that GHC and ghc-pkg accept options in a different form;
+for example GHC takes ```-package-db``` while ghc-pkg takes
+```--package-db=```. For more details: http://www.vex.net/~trebla/haskell/sicp.xhtml
