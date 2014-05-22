@@ -132,7 +132,7 @@ case you can use vim's visual mode to highlight the text and then hit
 ```Shift-F4``` or ```Shift-F5``` to open the doc or echo the url
 for the highlighted term.
 
-The [screencast](https://www.youtube.com/watch?v=xSrgvUHmF5Q) shows
+The [screencast](https://www.youtube.com/watch?v=7yO_VGCWMu8) shows
 some examples. Make sure that the video plays in 720p HD fullscreen.
 
 ## Customising
