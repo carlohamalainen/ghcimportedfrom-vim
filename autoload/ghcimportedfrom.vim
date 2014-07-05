@@ -24,7 +24,7 @@ endfunction
 function! ghcimportedfrom#get_doc_url(path, module, fexp, line, col) "{{{
   " Call ghc-imported-from to get the haddock url, if possible.
 
-  let l:cmd = ['ghc-imported-from', 'haddock-url', a:path, a:module, a:fexp, a:line, a:col]
+  let l:cmd = ['ghc-imported-from', a:path, a:module, a:fexp, a:line, a:col]
 
   " GHC options
   if exists('b:ghcimportedfrom_ghc_options')
